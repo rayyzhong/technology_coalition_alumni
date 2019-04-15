@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class BeanUtils extends org.springframework.beans.BeanUtils  {
     /**
-     * 把N个Object[]转换为List<bean>，要求实体类中字段的数量与顺序和Object[]中完全一致
+     * Tern N Object[] into LIst<bean>，number and order are exactly the same as Object[]
      * @param sourceList
-     * @param clazz 要转换的Bean的class
+     * @param clazz Bean class
      * @return
      * @throws Exception
      */
@@ -25,7 +25,7 @@ public class BeanUtils extends org.springframework.beans.BeanUtils  {
 
         for (Object[] objs : sourceList) {
             if (fields.length != objs.length) {
-                throw new RuntimeException("Bean中字段与Object[]集合中的字段不匹配！");
+                throw new RuntimeException("Fields in bean and Object[] collection un-match!");
             }
             T bean = clazz.newInstance();
             for(int i=0; i<fields.length; i++) {
@@ -38,7 +38,7 @@ public class BeanUtils extends org.springframework.beans.BeanUtils  {
     }
 
     /**
-     * 把Object[] 转换为Bean
+     * Convert Object[] into Bean
      * @param clazz
      * @param source
      * @param <T>
