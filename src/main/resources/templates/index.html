@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Technology Coalition - EEP</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="container">
+    <br>
+    <h1>Technology Coalition  <small>EEP alumni</small></h1>
+    <br>
+    <!--<p class="text-danger">  In the development of paging function...</p>-->
+    <!--<br>-->
+    <div>
+        <table class="table table-striped">
+            <THEAD>
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Name</th>
+                    <th>Nominator</th>
+                    <th>Batch</th>
+                    <!--<th>Phone</th>-->
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </THEAD>
+            <TBODY>
+                <tr th:each = "user:${all}">
+                    <td th:text="${user.staffId}" ></td>
+                    <td><a target="_blank" th:href="@{/order/details(id=${user.staffId})}" th:text="${user.userName}"></a></td>
+                    <td th:text="${user.nominator}" ></td>
+                    <td th:text="${'# ' + user.batch}" ></td>
+                    <!--<td th:text="${user.phone}" ></td>-->
+                    <td ><a th:href="${'/edit/'+user.userId}">edit</a></td>
+                    <td><a th:href="${'/del/'+user.userId}" >delete</a></td>
+                </tr>
+            </TBODY>
+        </table>
+        <a class="btn btn-info" href="/toAdd" role="button">Add</a>
+    </div>
+
+
+</body>
+</html>

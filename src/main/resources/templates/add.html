@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="container">
+    <br>
+    <h1>Add  <small>Please complete it.</small></h1>
+    <br>
+    <form action="/add" class="form-horizontal" method="post">
+        <div class="form-group">
+            <label for="staffId" class="col-sm-1 control-label">Staff ID</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" id="staffId" name="staffId">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="userName" class="col-sm-1 control-label">Name</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" id="userName" name="userName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="batch" class="col-sm-1 control-label">EEP Batch</label>
+            <div class="col-sm-5">
+                <select class="form-control" id="batch" name="batch">
+                    <option>N/A</option>
+                    <option th:each="i : ${#numbers.sequence( 1, 30, 1 )}"
+                            th:text="${ '# ' + i }"
+                            th:value="${ i }">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-info" value="Submit" type="submit">
+            &nbsp;&nbsp;&nbsp;
+            <input class="btn btn-info" value="Reset" type="reset">
+            &nbsp;&nbsp;&nbsp;
+            <a class="btn btn-success" href="/list">Index</a>
+        </div>
+    </form>
+</body>
+</html>
